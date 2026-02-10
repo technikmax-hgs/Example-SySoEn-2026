@@ -125,3 +125,53 @@ footer {
     padding: 2rem;
     margin-top: 4rem;
 }
+
+
+/* Toggle Button */
+.toggle-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;              /* Abgerundete Ecken */
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.toggle-btn:hover {
+    transform: translateY(-2px);      /* Hebt sich beim Hover */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.toggle-btn:active {
+    transform: translateY(0);         /* Drück-Effekt */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Image Container */
+.image-container {
+    margin-top: 2rem;
+    max-width: 100%;
+    overflow: hidden;
+    transition: opacity 0.4s ease, max-height 0.4s ease;
+    opacity: 1;
+    max-height: 1000px;
+}
+
+.image-container.hidden {
+    opacity: 0;                       /* Versteckt das Bild */
+    max-height: 0;
+    margin-top: 0;
+}
+
+.toggle-image {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: block;
+}
