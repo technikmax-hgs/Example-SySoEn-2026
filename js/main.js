@@ -34,19 +34,15 @@ document.querySelectorAll('.card').forEach(card => {
     observer.observe(card);
 });
 
-// Toggle-Funktion für Bildanzeige
-const toggleButton = document.getElementById('toggleButton');
-const imageContainer = document.getElementById('imageContainer');
+// Bild anzeigen/verstecken
 
-if (toggleButton && imageContainer) {
-    toggleButton.addEventListener('click', function() {
-        imageContainer.classList.toggle('hidden');
-        
-        // Ändere Button-Text je nach Status
-        if (imageContainer.classList.contains('hidden')) {
-            toggleButton.textContent = 'Bild anzeigen';
-        } else {
-            toggleButton.textContent = 'Bild verbergen';
-        }
-    });
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("btn");
+  const bild = document.getElementById("bild");
+
+  if (!btn || !bild) return;
+
+  btn.addEventListener("click", () => {
+    bild.hidden = !bild.hidden;   // toggelt sichtbar/unsichtbar
+  });
+});
