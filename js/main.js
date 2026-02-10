@@ -33,3 +33,20 @@ document.querySelectorAll('.card').forEach(card => {
     card.style.transition = 'opacity 0.6s, transform 0.6s';
     observer.observe(card);
 });
+
+// Toggle-Funktion für Bildanzeige
+const toggleButton = document.getElementById('toggleButton');
+const imageContainer = document.getElementById('imageContainer');
+
+if (toggleButton && imageContainer) {
+    toggleButton.addEventListener('click', function() {
+        imageContainer.classList.toggle('hidden');
+        
+        // Ändere Button-Text je nach Status
+        if (imageContainer.classList.contains('hidden')) {
+            toggleButton.textContent = 'Bild anzeigen';
+        } else {
+            toggleButton.textContent = 'Bild verbergen';
+        }
+    });
+}
