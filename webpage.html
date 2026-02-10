@@ -138,6 +138,82 @@
             color: #764ba2;
         }
 
+        /* Container für Toggle-Sektion */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .container h1 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .info {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #667eea;
+        }
+
+        /* Toggle Button */
+        .toggle-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: block;
+            margin: 0 auto;
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .toggle-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Image Container */
+        .image-container {
+            margin-top: 2rem;
+            max-width: 100%;
+            overflow: hidden;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
+            opacity: 1;
+            max-height: 1000px;
+        }
+
+        .image-container.hidden {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+        }
+
+        .toggle-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: block;
+            margin: 0 auto;
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 flex-direction: column;
@@ -150,6 +226,10 @@
 
             .cards {
                 grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -175,17 +255,27 @@
 
     <main>
         <section id="about" class="content-section">
-                <section id="image-toggle" class="content-section">
-                <h2>Bildanzeige</h2>
-                <button id="toggleButton" class="toggle-btn">Bild anzeigen</button>
-                <div id="imageContainer" class="image-container hidden">
-                <img src="images/logo/Apfel.jpg" alt="Beispielbild" class="toggle-image">
-        </div>
-     </section>
             <h2>Über uns</h2>
             <p>Hier kannst du Informationen über dein Unternehmen, Projekt oder dich selbst einfügen. Passe den Text nach deinen Wünschen an.</p>
         </section>
+		
+		<div class="container">
+			<h1>Bild Toggle Funktion - Test</h1>
+        
+				<div class="info">
+					<strong>So funktioniert es:</strong><br>
+					Klicke auf den Button, um das Bild anzuzeigen oder zu verbergen. Der Button-Text ändert sich automatisch.
+				</div>
 
+				<button id="toggleButton" class="toggle-btn">Bild anzeigen</button>
+        
+				<div id="imageContainer" class="image-container hidden">
+					<!-- Platzhalter-Bild mit data URL -->
+				<img src="data:image/logos/apfel.jpg width='600' height='400' viewBox='0 0 600 400'%3E%3Crect fill='%23667eea' width='600' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EDies ist ein Beispielbild%3C/text%3E%3Ctext x='50%25' y='60%25' font-size='16' fill='white' text-anchor='middle' dominant-baseline='middle' font-family='Arial'%3EErsetze es mit deinem eigenen Bild%3C/text%3E%3C/svg%3E" alt="Beispielbild" class="toggle-image">
+			</div>
+		</div>
+		
+		
         <section id="services" class="content-section">
             <h2>Unsere Services</h2>
             <div class="cards">
@@ -206,7 +296,7 @@
 
         <section id="contact" class="content-section">
             <h2>Kontakt</h2>
-            <p>Du möchtest mit uns in Kontakt treten? Schreib uns eine E-Mail an <a href="mailto:info@example.com" style="color: #667eea;">info@example.com</a></p>
+            <p>Du möchtest mit uns in Kontakt treten? Schreib uns eine E-Mail an <a href="/cdn-cgi/l/email-protection#b1d8dfd7def1d4c9d0dcc1ddd49fd2dedc" style="color: #667eea;"><span class="__cf_email__" data-cfemail="a3cacdc5cce3c6dbc2ced3cfc68dc0ccce">[email&#160;protected]</span></a></p>
         </section>
     </main>
 
@@ -214,42 +304,22 @@
         <p>&copy; 2026 Deine Webseite. Alle Rechte vorbehalten.</p>
     </footer>
 
-    <script>
-        // Smooth Scrolling für Navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Toggle Button für Bildanzeige
+        const toggleButton = document.getElementById('toggleButton');
+        const imageContainer = document.getElementById('imageContainer');
 
-        // Einfache Animation beim Scrollen
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            card.style.transition = 'opacity 0.6s, transform 0.6s';
-            observer.observe(card);
-        });
-    </script>
-</body>
-</html>
+        if (toggleButton && imageContainer) {
+            toggleButton.addEventListener('click', function() {
+                console.log('Button geklickt!'); // Debug-Ausgabe
+                
+                imageContainer.classList.toggle('hidden');
+                
+                // Ändere Button-Text je nach Status
+                if (imageContainer.classList.contains('hidden')) {
+                    toggleButton.textContent = 'Bild anzeigen';
+                    console.log('Bild versteckt'); // Debug-Ausgabe
+                } else {
+                    toggleButton.textContent = 'Bild verbergen';
+                    console.log('Bild angezeigt'); // Debug-Ausgabe
+            
